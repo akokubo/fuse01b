@@ -3,8 +3,6 @@
  * @class Goal
  * @constructor
  * @namespace FUSE01B
- * @param {Number} x x成分
- * @param {Number} y y成分
  */
 FUSE01B.Goal = Class.create(Sprite, {
     /**
