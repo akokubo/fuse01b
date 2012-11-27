@@ -8,4 +8,4 @@ release: fuse01b/all.js fuse01b/enchant.min.js fuse01b/end.png fuse01b/index.htm
 
 clean:
 	-rm fuse01b.zip
-	-rm fuse01b/all.js
+	-rm src/all.js
