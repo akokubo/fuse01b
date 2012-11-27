@@ -13,7 +13,7 @@ FUSE01B.Life = Class.create(Label, {
         this.value = 3;
         this.text = "LIFE: " + this.value;
 
-        this.x = 160;
+        this.x = 210;
         this.y = 10;
         this.color = "white";
         this.font = "24px 'Consolas', 'Monaco', 'ＭＳ ゴシック'";

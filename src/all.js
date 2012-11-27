@@ -23,7 +23,8 @@ FUSE01B.config = {
 	BALL_SPEED_MIN: 2,
 	BALL_SPEED_MAX: 5,
 	BALL_INITIAL_POSITION_OFFSET: 40,
-	AIR_REGISTANCE: 0.003,
+	AIR_REGISTANCE1: 0.003,
+	AIR_REGISTANCE2: 0.002,
 	GOAL_X: 280,
 	GOAL_Y: 280,
 	GOAL_SIZE: 40
@@ -473,8 +474,6 @@ FUSE01B.Segment.prototype.normal = function () {
  * @class Ball
  * @constructor
  * @namespace FUSE01B
- * @param {Number} x x成分
- * @param {Number} y y成分
  */
 FUSE01B.Ball = Class.create(Sprite, {
     /**
@@ -533,7 +532,7 @@ FUSE01B.Ball = Class.create(Sprite, {
 
         power = function (v) {
             var ratio;
-            ratio = v / 5 * 128 + 128;
+            ratio = v * v / 25 * 155 + 100;
             if (ratio > 255) {
                 ratio = 255;
             }
@@ -609,7 +608,7 @@ FUSE01B.Ball = Class.create(Sprite, {
     resistance: function () {
         'use strict';
         var v = this.point.velocity.length();
-        this.point.velocity.setLength((1 - FUSE01B.config.AIR_REGISTANCE) * v);
+        this.point.velocity.setLength((1 - FUSE01B.config.AIR_REGISTANCE1) * v - FUSE01B.config.AIR_REGISTANCE2);
     }
 });
 
@@ -618,8 +617,6 @@ FUSE01B.Ball = Class.create(Sprite, {
  * @class Glune
  * @constructor
  * @namespace FUSE01B
- * @param {Number} x x成分
- * @param {Number} y y成分
  */
 FUSE01B.Glue = Class.create(Sprite, {
     initialize: function () {
@@ -754,8 +751,6 @@ FUSE01B.Glue = Class.create(Sprite, {
  * @class Goal
  * @constructor
  * @namespace FUSE01B
- * @param {Number} x x成分
- * @param {Number} y y成分
  */
 FUSE01B.Goal = Class.create(Sprite, {
     /**
@@ -884,7 +879,7 @@ FUSE01B.Life = Class.create(Label, {
         this.value = 3;
         this.text = "LIFE: " + this.value;
 
-        this.x = 160;
+        this.x = 210;
         this.y = 10;
         this.color = "white";
         this.font = "24px 'Consolas', 'Monaco', 'ＭＳ ゴシック'";
@@ -1014,7 +1009,7 @@ window.onload = function () {
          */
         inGoal = function (ball, goal) {
             var dist2, velocity, threshold;
-            threshold = (FUSE01B.config.BALL_SIZE + FUSE01B.config.GOAL_SIZE) / 2;
+            threshold = FUSE01B.config.GOAL_SIZE / 2;
 
             dist2 = function (ball, goal) {
                 var x0, y0, x1, y1;

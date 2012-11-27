@@ -105,7 +105,7 @@ window.onload = function () {
          */
         inGoal = function (ball, goal) {
             var dist2, velocity, threshold;
-            threshold = (FUSE01B.config.BALL_SIZE + FUSE01B.config.GOAL_SIZE) / 2;
+            threshold = FUSE01B.config.GOAL_SIZE / 2;
 
             dist2 = function (ball, goal) {
                 var x0, y0, x1, y1;

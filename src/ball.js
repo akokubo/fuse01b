@@ -61,7 +61,7 @@ FUSE01B.Ball = Class.create(Sprite, {
 
         power = function (v) {
             var ratio;
-            ratio = v / 5 * 128 + 128;
+            ratio = v * v / 25 * 155 + 100;
             if (ratio > 255) {
                 ratio = 255;
             }
@@ -137,7 +137,7 @@ FUSE01B.Ball = Class.create(Sprite, {
     resistance: function () {
         'use strict';
         var v = this.point.velocity.length();
-        this.point.velocity.setLength((1 - FUSE01B.config.AIR_REGISTANCE) * v);
+        this.point.velocity.setLength((1 - FUSE01B.config.AIR_REGISTANCE1) * v - FUSE01B.config.AIR_REGISTANCE2);
     }
 });
 
